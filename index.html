@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Para Emilly ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#111,#222,#111);
+height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+color:white;
+
+overflow:hidden;
+
+}
+
+.container{
+
+width:90%;
+max-width:700px;
+
+background:#1d1d1d;
+
+padding:40px;
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0px 0px 30px rgba(255,255,255,.08);
+
+}
+
+h1{
+
+margin-bottom:20px;
+
+}
+
+p{
+
+margin-bottom:20px;
+
+line-height:1.7;
+
+}
+
+input{
+
+width:100%;
+
+padding:15px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+}
+
+button{
+
+padding:15px 40px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ff4f81;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+#erro{
+
+margin-top:20px;
+
+color:#ff7b7b;
+
+font-weight:bold;
+
+}
+
+#conteudo{
+
+display:none;
+
+animation:aparecer 1s;
+
+text-align:left;
+
+}
+
+img{
+
+width:100%;
+
+margin-top:30px;
+
+border-radius:15px;
+
+}
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0px);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="login">
+
+<h1>🔒</h1>
+
+<h2>Para Emilly</h2>
+
+<p>
+
+Você resolveu todos os enigmas.
+
+Agora transforme os números em letras.
+
+Quando descobrir a senha...
+
+o restante será revelado.
+
+</p>
+
+<input
+id="senha"
+type="password"
+placeholder="Digite a senha">
+
+<button onclick="entrar()">
+
+Desbloquear
+
+</button>
+
+<p id="erro"></p>
+
+</div>
+
+<div id="conteudo">
+
+<h1>❤️ Feliz Aniversário ❤️</h1>
+
+<p>
+
+<!-- SUA CARTA AQUI -->
+
+Escreva aqui toda a sua carta.
+
+Pode escrever várias linhas.
+
+Pode colocar emojis.
+
+Pode agradecer.
+
+Pode contar momentos.
+
+Tudo ficará escondido até ela acertar a senha.
+
+</p>
+
+<img src="montagem.jpg">
+
+</div>
+
+</div>
+
+<script>
+
+function entrar(){
+
+let senha=document
+.getElementById("senha")
+.value
+.toUpperCase()
+.trim();
+
+if(senha==="EMILLYNDA"){
+
+document
+.getElementById("login")
+.style.display="none";
+
+document
+.getElementById("conteudo")
+.style.display="block";
+
+}
+
+else{
+
+document
+.getElementById("erro")
+.innerHTML="Senha incorreta ❤️";
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>
