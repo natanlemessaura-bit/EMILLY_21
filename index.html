@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Para Emilly ❤️</title>
 
@@ -13,12 +12,13 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 
-background:linear-gradient(135deg,#111,#222,#111);
+background:#050505;
+overflow:hidden;
 height:100vh;
 
 display:flex;
@@ -27,7 +27,39 @@ align-items:center;
 
 color:white;
 
+}
+
+/* ESTRELAS */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
 overflow:hidden;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.star{
+
+position:absolute;
+width:2px;
+height:2px;
+
+background:white;
+
+border-radius:50%;
+
+animation:piscar 2s infinite alternate;
+
+}
+
+@keyframes piscar{
+
+from{opacity:.2;}
+
+to{opacity:1;}
 
 }
 
@@ -36,29 +68,27 @@ overflow:hidden;
 width:90%;
 max-width:700px;
 
-background:#1d1d1d;
-
 padding:40px;
+
+background:rgba(20,20,20,.92);
 
 border-radius:20px;
 
 text-align:center;
 
-box-shadow:0px 0px 30px rgba(255,255,255,.08);
+box-shadow:0 0 40px rgba(255,255,255,.08);
+
+backdrop-filter:blur(6px);
 
 }
 
-h1{
+.lock{
+
+font-size:90px;
 
 margin-bottom:20px;
 
-}
-
-p{
-
-margin-bottom:20px;
-
-line-height:1.7;
+transition:.6s;
 
 }
 
@@ -68,13 +98,15 @@ width:100%;
 
 padding:15px;
 
-font-size:18px;
+margin-top:25px;
 
-border:none;
+margin-bottom:20px;
+
+font-size:18px;
 
 border-radius:10px;
 
-margin-bottom:20px;
+border:none;
 
 text-align:center;
 
@@ -82,7 +114,7 @@ text-align:center;
 
 button{
 
-padding:15px 40px;
+padding:15px 35px;
 
 font-size:18px;
 
@@ -102,7 +134,7 @@ transition:.3s;
 
 button:hover{
 
-transform:scale(1.05);
+transform:scale(1.08);
 
 }
 
@@ -110,7 +142,7 @@ transform:scale(1.05);
 
 margin-top:20px;
 
-color:#ff7b7b;
+color:#ff9090;
 
 font-weight:bold;
 
@@ -120,7 +152,11 @@ font-weight:bold;
 
 display:none;
 
-animation:aparecer 1s;
+animation:fade 1.5s;
+
+overflow-y:auto;
+
+max-height:80vh;
 
 text-align:left;
 
@@ -130,58 +166,57 @@ img{
 
 width:100%;
 
-margin-top:30px;
-
 border-radius:15px;
+
+margin-top:25px;
 
 }
 
-@keyframes aparecer{
+@keyframes fade{
 
 from{
 
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 
 }
 
 to{
 
 opacity:1;
-transform:translateY(0px);
+transform:translateY(0);
 
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
+
+<div class="stars" id="stars"></div>
 
 <div class="container">
 
 <div id="login">
 
-<h1>🔒</h1>
+<div class="lock" id="cadeado">🔒</div>
 
 <h2>Para Emilly</h2>
 
-<p>
-
-Insira a senha de 9 letras:
-
+<p style="margin-top:20px;">
+Insira a senha de 9 letras.
 </p>
 
 <input
 id="senha"
 type="password"
-placeholder="Digite a senha">
+placeholder="Senha">
 
 <button onclick="entrar()">
 
-Desbloquear
+❤️ Revelar meu presente
 
 </button>
 
@@ -191,33 +226,43 @@ Desbloquear
 
 <div id="conteudo">
 
-<h1>❤️ Feliz Aniversário ❤️</h1>
+<h1 style="text-align:center;">
+❤️ Feliz Aniversário ❤️
+</h1>
 
-<p>
+<p style="margin-top:25px;line-height:1.8;">
 
-<!-- SUA CARTA AQUI -->
-
-Escreva aqui toda a sua carta.
-
-Pode escrever várias linhas.
-
-Pode colocar emojis.
-
-Pode agradecer.
-
-Pode contar momentos.
-
-Tudo ficará escondido até ela acertar a senha.
+ESCREVA SUA CARTA AQUI.
 
 </p>
 
-<img src="montagem.jpg">
+<img src="montagem.png">
 
 </div>
 
 </div>
 
 <script>
+
+// cria estrelas
+
+for(let i=0;i<180;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDelay=Math.random()*3+"s";
+
+star.style.opacity=Math.random();
+
+document.getElementById("stars").appendChild(star);
+
+}
 
 function entrar(){
 
@@ -229,21 +274,25 @@ let senha=document
 
 if(senha==="EMILLYNDA"){
 
-document
-.getElementById("login")
-.style.display="none";
+document.getElementById("erro").innerHTML="";
 
-document
-.getElementById("conteudo")
-.style.display="block";
+document.getElementById("cadeado").innerHTML="🔓";
 
-}
+setTimeout(function(){
 
-else{
+document.getElementById("login").style.display="none";
 
-document
-.getElementById("erro")
-.innerHTML="Senha incorreta ❤️";
+document.body.style.transition="1s";
+
+document.body.style.background="#000";
+
+document.getElementById("conteudo").style.display="block";
+
+},1000);
+
+}else{
+
+document.getElementById("erro").innerHTML="Ainda não... ❤️";
 
 }
 
@@ -252,5 +301,4 @@ document
 </script>
 
 </body>
-
 </html>
