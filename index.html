@@ -16,19 +16,12 @@ font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
+    background:#050505;
+    min-height:100vh;
+    margin:0;
 
-background:#050505;
-overflow:hidden;
-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-color:white;
-
+    color:white;
 }
-
 /* ESTRELAS */
 
 .stars{
@@ -63,6 +56,54 @@ to{opacity:1;}
 
 }
 
+ /* FUNDO DA CARTA */
+
+#conteudo{
+    display:none;
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:60px 20px 80px;
+
+    animation:fade 1.5s;
+
+    text-align:left;
+}
+
+/* imagem desfocada no fundo */
+
+#conteudo::before{
+    content:"";
+
+    position:fixed;
+    inset:-20px;
+
+    background-image:url("montagem.jpg");
+    background-size:cover;
+    background-position:center;
+
+    filter:blur(5px);
+
+    transform:scale(1.05);
+
+    z-index:-2;
+}
+
+/* camada escura sobre a imagem */
+
+#conteudo::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,0.35);
+
+    z-index:-1;
+} 
+  
 .container{
 
 width:90%;
@@ -82,6 +123,71 @@ backdrop-filter:blur(6px);
 
 }
 
+  .carta-box{
+    width:100%;
+    max-width:750px;
+
+    margin:0 auto;
+
+    padding:45px;
+
+    background:rgba(15,15,15,0.62);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    border-radius:20px;
+
+    box-shadow:0 10px 50px rgba(0,0,0,0.35);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+    line-height:1.8;
+}
+
+/* REVELAÇÃO DA MONTAGEM */
+
+.revelacao{
+    width:100%;
+    max-width:750px;
+
+    margin:100px auto 0;
+
+    text-align:center;
+}
+
+.frase-final{
+    font-size:20px;
+
+    margin-bottom:35px;
+
+    opacity:0.9;
+}
+
+.montagem-final{
+    width:100%;
+
+    display:block;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.6);
+
+    filter:none;
+
+    animation:revelarMontagem 1.5s ease;
+}
+
+.final-texto{
+    font-size:22px;
+
+    margin-top:35px;
+
+    padding-bottom:30px;
+}
+  
 .lock{
 
 font-size:90px;
@@ -174,6 +280,20 @@ margin-top:25px;
 
 @keyframes fade{
 
+@keyframes revelarMontagem{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+  
 from{
 
 opacity:0;
@@ -226,33 +346,47 @@ placeholder="Senha">
 
 <div id="conteudo">
 
-<h1 style="text-align:center;">
-❤️ Feliz Aniversário ❤️
-</h1>
+    <div class="carta-box">
 
-<p style="margin-top:25px;line-height:1.8;">
+        <h1 style="text-align:center;">
+            ❤️ Feliz Aniversário ❤️
+        </h1>
 
-  depois de todas pistas e provavelmente algumas tentativas de entender o que eu estava inventando, você finalmente chegou aqui KKKKKKKKK<br><br>
+        <p>
+            Querida Emilly,
+        </p>
 
-  eu acho que não poderia existir uma forma melhor de começar essa carta, já que se tem uma coisa que eu gosto na gente é que nunca parece que estamos simplesmente vivendo os dias,
-a gente sempre da um jeito de transformar as coisas em uma história ou piada nossa que vai ficar.<br><br>
+        <p>
+            ESCREVA SUA CARTA AQUI.
+        </p>
 
-  hoje é o seu dia, eu queria que esse presente fosse mais do que uma carta dizendo "feliz aniversário". queria fazer alguma coisa que fosse realmente sua, que tivesse um pouquinho de você em cada detalhe.
-Porque você merece ser lembrada não só pelo quanto é importante para mim, mas por tudo aquilo que faz você ser você.<br><br>
+        <p>
+            Aqui você pode colocar quantos parágrafos quiser.
+            A página vai poder ser rolada normalmente no celular.
+        </p>
 
-  amo a sua companhia, as nossas conversas, as besteiras que a gente fala e até daqueles momentos em que a gente não está fazendo nada de especial, mas mesmo assim acaba sendo bom só porque estamos juntos.
-você é uma pessoa que eu admiro muito, não só pelo que você é comigo, mas pela pessoa que você é no dia a dia, pelo seu jeito. tenho muito orgulho do seu esforço e dedicação para conquistar o que quer, seus objetivos
-e com certeza vai ser muito recompensada por isso em toda a sua vida, você é FODAAAAAAAAAAA<br><br>
-  
- então, no seu aniversário, eu só quero que você saiba o quanto eu espero que esse novo ano da sua vida seja incrível.
-que você conquiste as coisas que deseja, descubra coisas novas, viva momentos que ainda nem imagina e continue sendo essa pessoa que eu tenho tanta sorte de conhecer.
-eu vou sempre estar ao seu lado para acompanhar tudo isso, nas viagens, nos cinemas, nas fotos, nas piadas ruins, nas pequenas aventuras e em todas as histórias que ainda vamos criar.<br><br>
+        <p>
+            Espero que você goste desse pequeno presente que preparei para você.
+        </p>
 
-feliz aniversário, Emilly ❤️
-  
-</p>
+    </div>
 
-<img src="montagem.jpg">
+
+    <!-- REVELAÇÃO FINAL -->
+
+    <div class="revelacao">
+
+        <p class="frase-final">
+            E agora, uma última coisa...
+        </p>
+
+        <img src="montagem.jpg" class="montagem-final">
+
+        <p class="final-texto">
+            ❤️ Feliz aniversário, Emilly. ❤️
+        </p>
+
+    </div>
 
 </div>
 
