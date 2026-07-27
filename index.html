@@ -1,65 +1,250 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Para Emilly ❤️</title>
 
+
 <style>
 
+/* ============================= */
+/* CONFIGURAÇÕES GERAIS */
+/* ============================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    min-height:100%;
 }
 
 body{
+
     background:#050505;
+
     min-height:100vh;
+
     margin:0;
 
     color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
 }
-/* ESTRELAS */
+
+
+/* ============================= */
+/* FUNDO ESTRELADO */
+/* ============================= */
 
 .stars{
-position:fixed;
-width:100%;
-height:100%;
-overflow:hidden;
-top:0;
-left:0;
-z-index:-1;
+
+    position:fixed;
+
+    width:100%;
+    height:100%;
+
+    top:0;
+    left:0;
+
+    overflow:hidden;
+
+    z-index:-10;
+
 }
+
 
 .star{
 
-position:absolute;
-width:2px;
-height:2px;
+    position:absolute;
 
-background:white;
+    width:2px;
+    height:2px;
 
-border-radius:50%;
+    background:white;
 
-animation:piscar 2s infinite alternate;
+    border-radius:50%;
+
+    animation:piscar 2s infinite alternate;
 
 }
+
 
 @keyframes piscar{
 
-from{opacity:.2;}
+    from{
+        opacity:0.2;
+    }
 
-to{opacity:1;}
+    to{
+        opacity:1;
+    }
 
 }
 
- /* FUNDO DA CARTA */
+
+/* ============================= */
+/* CONTAINER DA TELA DE SENHA */
+/* ============================= */
+
+.container{
+
+    width:90%;
+
+    max-width:700px;
+
+    margin:0 auto;
+
+    padding:40px;
+
+    background:rgba(20,20,20,0.92);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 40px rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(6px);
+
+}
+
+
+/* ============================= */
+/* CADEADO */
+/* ============================= */
+
+.lock{
+
+    font-size:90px;
+
+    margin-bottom:20px;
+
+    transition:
+
+        transform 0.6s ease,
+
+        opacity 0.6s ease;
+
+}
+
+
+/* ============================= */
+/* CAMPO DE SENHA */
+/* ============================= */
+
+input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:25px;
+
+    margin-bottom:20px;
+
+    font-size:18px;
+
+    border-radius:10px;
+
+    border:none;
+
+    outline:none;
+
+    text-align:center;
+
+}
+
+
+input:focus{
+
+    box-shadow:
+        0 0 0 2px #ff4f81;
+
+}
+
+
+/* ============================= */
+/* BOTÃO */
+/* ============================= */
+
+button{
+
+    padding:15px 35px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff4f81;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:
+
+        transform 0.3s ease,
+
+        background 0.3s ease;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.06);
+
+    background:#ff3d75;
+
+}
+
+
+button:active{
+
+    transform:scale(0.98);
+
+}
+
+
+/* ============================= */
+/* MENSAGEM DE ERRO */
+/* ============================= */
+
+#erro{
+
+    margin-top:20px;
+
+    color:#ff9090;
+
+    font-weight:bold;
+
+}
+
+
+/* ============================= */
+/* CONTEÚDO DA CARTA */
+/* ============================= */
 
 #conteudo{
+
     display:none;
+
+    position:relative;
 
     width:100%;
 
@@ -67,21 +252,31 @@ to{opacity:1;}
 
     padding:60px 20px 80px;
 
-    animation:fade 1.5s;
-
     text-align:left;
+
+    animation:fade 1.5s ease;
+
+    overflow:hidden;
+
 }
 
-/* imagem desfocada no fundo */
+
+/* ============================= */
+/* MONTAGEM DESFOCADA NO FUNDO */
+/* ============================= */
 
 #conteudo::before{
+
     content:"";
 
     position:fixed;
+
     inset:-20px;
 
     background-image:url("montagem.jpg");
+
     background-size:cover;
+
     background-position:center;
 
     filter:blur(5px);
@@ -89,42 +284,37 @@ to{opacity:1;}
     transform:scale(1.05);
 
     z-index:-2;
+
 }
 
-/* camada escura sobre a imagem */
+
+/* ============================= */
+/* CAMADA ESCURA SOBRE A MONTAGEM */
+/* ============================= */
 
 #conteudo::after{
+
     content:"";
 
     position:fixed;
+
     inset:0;
 
     background:rgba(0,0,0,0.35);
 
     z-index:-1;
-} 
-  
-.container{
-
-width:90%;
-max-width:700px;
-
-padding:40px;
-
-background:rgba(20,20,20,.92);
-
-border-radius:20px;
-
-text-align:center;
-
-box-shadow:0 0 40px rgba(255,255,255,.08);
-
-backdrop-filter:blur(6px);
 
 }
 
-  .carta-box{
+
+/* ============================= */
+/* CAIXA DA CARTA */
+/* ============================= */
+
+.carta-box{
+
     width:100%;
+
     max-width:750px;
 
     margin:0 auto;
@@ -133,322 +323,705 @@ backdrop-filter:blur(6px);
 
     background:rgba(15,15,15,0.62);
 
-    border:1px solid rgba(255,255,255,0.15);
+    border:
+
+        1px solid
+
+        rgba(255,255,255,0.15);
 
     border-radius:20px;
 
-    box-shadow:0 10px 50px rgba(0,0,0,0.35);
+    box-shadow:
+
+        0 10px 50px
+
+        rgba(0,0,0,0.35);
 
     backdrop-filter:blur(8px);
 
     -webkit-backdrop-filter:blur(8px);
 
     line-height:1.8;
+
 }
 
-/* REVELAÇÃO DA MONTAGEM */
+
+/* ============================= */
+/* TÍTULO DA CARTA */
+/* ============================= */
+
+.carta-box h1{
+
+    margin-bottom:35px;
+
+    line-height:1.3;
+
+}
+
+
+/* ============================= */
+/* PARÁGRAFOS DA CARTA */
+/* ============================= */
+
+.carta-box p{
+
+    margin-bottom:25px;
+
+    font-size:17px;
+
+}
+
+
+/* ============================= */
+/* REVELAÇÃO FINAL */
+/* ============================= */
 
 .revelacao{
+
     width:100%;
+
     max-width:750px;
 
     margin:100px auto 0;
 
     text-align:center;
+
 }
 
+
+/* ============================= */
+/* FRASE ANTES DA MONTAGEM */
+/* ============================= */
+
 .frase-final{
+
     font-size:20px;
 
     margin-bottom:35px;
 
     opacity:0.9;
+
 }
 
+
+/* ============================= */
+/* MONTAGEM FINAL SEM BLUR */
+/* ============================= */
+
 .montagem-final{
+
     width:100%;
+
+    height:auto;
 
     display:block;
 
     border-radius:18px;
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,0.6);
+
+        0 15px 50px
+
+        rgba(0,0,0,0.6);
 
     filter:none;
 
-    animation:revelarMontagem 1.5s ease;
+    animation:
+
+        revelarMontagem
+
+        1.5s
+
+        ease;
+
 }
 
+
+/* ============================= */
+/* TEXTO FINAL */
+/* ============================= */
+
 .final-texto{
+
     font-size:22px;
 
     margin-top:35px;
 
     padding-bottom:30px;
-}
-  
-.lock{
 
-font-size:90px;
-
-margin-bottom:20px;
-
-transition:.6s;
+    line-height:1.6;
 
 }
 
-input{
 
-width:100%;
-
-padding:15px;
-
-margin-top:25px;
-
-margin-bottom:20px;
-
-font-size:18px;
-
-border-radius:10px;
-
-border:none;
-
-text-align:center;
-
-}
-
-button{
-
-padding:15px 35px;
-
-font-size:18px;
-
-border:none;
-
-border-radius:10px;
-
-background:#ff4f81;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:scale(1.08);
-
-}
-
-#erro{
-
-margin-top:20px;
-
-color:#ff9090;
-
-font-weight:bold;
-
-}
-
-#conteudo{
-
-display:none;
-
-animation:fade 1.5s;
-
-overflow-y:auto;
-
-max-height:80vh;
-
-text-align:left;
-
-}
-
-img{
-
-width:100%;
-
-border-radius:15px;
-
-margin-top:25px;
-
-}
+/* ============================= */
+/* ANIMAÇÃO DA CARTA */
+/* ============================= */
 
 @keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* ============================= */
+/* ANIMAÇÃO DA MONTAGEM */
+/* ============================= */
 
 @keyframes revelarMontagem{
 
     from{
+
         opacity:0;
-        transform:translateY(30px);
+
+        transform:
+            translateY(30px);
+
     }
 
     to{
+
         opacity:1;
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
+
     }
 
 }
-  
-from{
 
-opacity:0;
-transform:translateY(20px);
+
+/* ============================= */
+/* CELULAR */
+/* ============================= */
+
+@media (max-width:600px){
+
+    .container{
+
+        width:92%;
+
+        padding:30px 22px;
+
+    }
+
+
+    .lock{
+
+        font-size:75px;
+
+    }
+
+
+    #conteudo{
+
+        padding:
+
+            30px
+
+            12px
+
+            60px;
+
+    }
+
+
+    .carta-box{
+
+        padding:
+
+            28px
+
+            22px;
+
+        border-radius:16px;
+
+        background:
+
+            rgba(15,15,15,0.68);
+
+    }
+
+
+    .carta-box h1{
+
+        font-size:26px;
+
+    }
+
+
+    .carta-box p{
+
+        font-size:16px;
+
+    }
+
+
+    .revelacao{
+
+        margin-top:70px;
+
+    }
+
+
+    .frase-final{
+
+        font-size:18px;
+
+    }
+
+
+    .final-texto{
+
+        font-size:20px;
+
+    }
 
 }
 
-to{
 
-opacity:1;
-transform:translateY(0);
+/* ============================= */
+/* CELULAR PEQUENO */
+/* ============================= */
+
+@media (max-width:380px){
+
+    .container{
+
+        padding:
+
+            25px
+
+            18px;
+
+    }
+
+
+    .lock{
+
+        font-size:65px;
+
+    }
+
+
+    button{
+
+        width:100%;
+
+        font-size:16px;
+
+    }
 
 }
 
-}
 
 </style>
+
 </head>
+
 
 <body>
 
-<div class="stars" id="stars"></div>
 
-<div class="container">
+<!-- ============================= -->
+<!-- ESTRELAS -->
+<!-- ============================= -->
 
-<div id="login">
+<div
+    class="stars"
+    id="stars">
+</div>
 
-<div class="lock" id="cadeado">🔒</div>
 
-<h2>Para Emilly</h2>
 
-<p style="margin-top:20px;">
-Insira a senha de 9 letras.
-</p>
+<!-- ============================= -->
+<!-- TELA DE SENHA -->
+<!-- ============================= -->
 
-<input
-id="senha"
-type="password"
-placeholder="Senha">
+<div
+    class="container"
+    id="login">
 
-<button onclick="entrar()">
 
-❤️ Revelar meu presente
+    <div
+        class="lock"
+        id="cadeado">
 
-</button>
+        🔒
 
-<p id="erro"></p>
+    </div>
+
+
+    <h2>
+        Para Emilly
+    </h2>
+
+
+    <p
+        style="margin-top:20px;">
+
+        Insira a senha de 9 letras.
+
+    </p>
+
+
+    <input
+
+        id="senha"
+
+        type="password"
+
+        placeholder="Senha"
+
+        autocomplete="off"
+
+    >
+
+
+    <button
+        onclick="entrar()">
+
+        ❤️ Revelar meu presente
+
+    </button>
+
+
+    <p
+        id="erro">
+    </p>
+
 
 </div>
 
-<div id="conteudo">
 
-    <div class="carta-box">
 
-        <h1 style="text-align:center;">
+<!-- ============================= -->
+<!-- CONTEÚDO DESBLOQUEADO -->
+<!-- ============================= -->
+
+<div
+    id="conteudo">
+
+
+    <!-- ========================= -->
+    <!-- CARTA -->
+    <!-- ========================= -->
+
+    <div
+        class="carta-box">
+
+
+        <h1
+            style="text-align:center;">
+
             ❤️ Feliz Aniversário ❤️
+
         </h1>
 
-        <p>
-            Querida Emilly,
-        </p>
+https://natanlemessaura-bit.github.io/EMILLY_21/
 
-        <p>
-            ESCREVA SUA CARTA AQUI.
-        </p>
+ depois de todas pistas e provavelmente algumas tentativas de entender o que eu estava inventando, você finalmente chegou aqui KKKKKKKKK<br><br>
 
-        <p>
-            Aqui você pode colocar quantos parágrafos quiser.
-            A página vai poder ser rolada normalmente no celular.
-        </p>
+  eu acho que não poderia existir uma forma melhor de começar essa carta, já que se tem uma coisa que eu gosto na gente é que nunca parece que estamos simplesmente vivendo os dias,
+a gente sempre da um jeito de transformar as coisas em uma história ou piada nossa que vai ficar.<br><br>
 
-        <p>
-            Espero que você goste desse pequeno presente que preparei para você.
-        </p>
+  hoje é o seu dia, eu queria que esse presente fosse mais do que uma carta dizendo "feliz aniversário". queria fazer alguma coisa que fosse realmente sua, que tivesse um pouquinho de você em cada detalhe.
+Porque você merece ser lembrada não só pelo quanto é importante para mim, mas por tudo aquilo que faz você ser você.<br><br>
+
+  amo a sua companhia, as nossas conversas, as besteiras que a gente fala e até daqueles momentos em que a gente não está fazendo nada de especial, mas mesmo assim acaba sendo bom só porque estamos juntos.
+você é uma pessoa que eu admiro muito, não só pelo que você é comigo, mas pela pessoa que você é no dia a dia, pelo seu jeito. tenho muito orgulho do seu esforço e dedicação para conquistar o que quer, seus objetivos
+e com certeza vai ser muito recompensada por isso em toda a sua vida, você é FODAAAAAAAAAAA<br><br>
+  
+ então, no seu aniversário, eu só quero que você saiba o quanto eu espero que esse novo ano da sua vida seja incrível.
+que você conquiste as coisas que deseja, descubra coisas novas, viva momentos que ainda nem imagina e continue sendo essa pessoa que eu tenho tanta sorte de conhecer.
+eu vou sempre estar ao seu lado para acompanhar tudo isso, nas viagens, nos cinemas, nas fotos, nas piadas ruins, nas pequenas aventuras e em todas as histórias que ainda vamos criar.<br><br>
+
+feliz aniversário, Emilly ❤️
 
     </div>
 
 
-    <!-- REVELAÇÃO FINAL -->
 
-    <div class="revelacao">
+    <!-- ============================= -->
+    <!-- REVELAÇÃO DA MONTAGEM -->
+    <!-- ============================= -->
 
-        <p class="frase-final">
-            E agora, uma última coisa...
+    <div
+        class="revelacao">
+
+
+        <p
+            class="frase-final">
+
+            EU TE AMOOOO
+
         </p>
 
-        <img src="montagem.jpg" class="montagem-final">
 
-        <p class="final-texto">
+        <img
+
+            src="montagem.jpg"
+
+            class="montagem-final"
+
+            alt="Uma lembrança especial"
+
+        >
+
+
+        <p
+            class="final-texto">
+
             ❤️ Feliz aniversário, Emilly. ❤️
+
         </p>
+
 
     </div>
 
-</div>
 
 </div>
+
+
 
 <script>
 
-// cria estrelas
 
-for(let i=0;i<180;i++){
+/* ============================= */
+/* CRIAÇÃO DAS ESTRELAS */
+/* ============================= */
 
-let star=document.createElement("div");
+for(
 
-star.className="star";
+    let i = 0;
 
-star.style.left=Math.random()*100+"%";
+    i < 180;
 
-star.style.top=Math.random()*100+"%";
+    i++
 
-star.style.animationDelay=Math.random()*3+"s";
+){
 
-star.style.opacity=Math.random();
+    let star =
+        document.createElement("div");
 
-document.getElementById("stars").appendChild(star);
+
+    star.className =
+        "star";
+
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+
+    star.style.opacity =
+        Math.random();
+
+
+    document
+
+        .getElementById("stars")
+
+        .appendChild(star);
 
 }
+
+
+
+/* ============================= */
+/* FUNÇÃO DA SENHA */
+/* ============================= */
 
 function entrar(){
 
-let senha=document
-.getElementById("senha")
-.value
-.toUpperCase()
-.trim();
 
-if(senha==="EMILLYNDA"){
+    let senha = document
 
-document.getElementById("erro").innerHTML="";
+        .getElementById("senha")
 
-document.getElementById("cadeado").innerHTML="🔓";
+        .value
 
-setTimeout(function(){
+        .toUpperCase()
 
-document.getElementById("login").style.display="none";
+        .trim();
 
-document.body.style.transition="1s";
 
-document.body.style.background="#000";
 
-document.getElementById("conteudo").style.display="block";
+    /* ========================= */
+    /* SENHA CORRETA */
+    /* ========================= */
 
-},1000);
+    if(
 
-}else{
+        senha === "EMILLYNDA"
 
-document.getElementById("erro").innerHTML="Ainda não... ❤️";
+    ){
+
+
+        /* Remove mensagem de erro */
+
+        document
+
+            .getElementById("erro")
+
+            .innerHTML = "";
+
+
+
+        /* Troca o cadeado */
+
+        document
+
+            .getElementById("cadeado")
+
+            .innerHTML = "🔓";
+
+
+
+        /* Pequena animação */
+
+        document
+
+            .getElementById("cadeado")
+
+            .style.transform =
+                "scale(1.2)";
+
+
+
+        /* Espera antes de revelar */
+
+        setTimeout(
+
+            function(){
+
+
+                /* Esconde a tela de senha */
+
+                document
+
+                    .getElementById("login")
+
+                    .style.display =
+                        "none";
+
+
+
+                /* Mostra a carta */
+
+                document
+
+                    .getElementById("conteudo")
+
+                    .style.display =
+                        "block";
+
+
+
+                /* Remove fundo preto */
+
+                document.body.style.background =
+                    "#000";
+
+
+                /* Volta para o topo */
+
+                window.scrollTo({
+
+                    top:0,
+
+                    behavior:"smooth"
+
+                });
+
+
+            },
+
+            1000
+
+        );
+
+
+    }
+
+
+    /* ========================= */
+    /* SENHA INCORRETA */
+    /* ========================= */
+
+    else{
+
+
+        document
+
+            .getElementById("erro")
+
+            .innerHTML =
+                "SENHA ERRADA";
+
+
+    }
 
 }
 
-}
+
+/* ============================= */
+/* ENTER NO CAMPO DE SENHA */
+/* ============================= */
+
+document
+
+    .getElementById("senha")
+
+    .addEventListener(
+
+        "keydown",
+
+        function(event){
+
+
+            if(
+
+                event.key === "Enter"
+
+            ){
+
+                entrar();
+
+            }
+
+        }
+
+    );
+
 
 </script>
 
+
 </body>
+
 </html>
